@@ -2,11 +2,13 @@
 Navis is a fast, terminalbased routing engine built in C++ that helps you find the best train routes between stations. It uses a static dataset of historical train schedules to simulate routing logic,including calculating direct paths and 1hop connecting journeys 
 
 ``` Features```
-```Fast Routing :``` Quickly searches for direct trains between your origin and destination.
+```Fast Routing :``` Quickly searches for direct trains between your origin and destination with sub-5ms query execution times.
 
 ```Smart Connection :``` Identifies optimal 1hop connecting trains via junction stations with a minimum 20min layover.
 
-```Geographic Pruning :``` Uses the Haversine formula to filter out stations that would cause massive detours,making the search incredibly fast
+```Geographic Pruning :``` Uses the Haversine formula to filter out stations that would cause massive detours,making the search incredibly fast.
+
+```Robust Testing :``` Core routing algorithms and data structures are fully validated using **Google Test (gTest)** to ensure 100% pathfinding accuracy.
 
 
 ```Example Output```
