@@ -6,6 +6,7 @@
 #include <vector>
 #include <algorithm>
 #include <cctype>
+#include <chrono>
 #include "Parser.hpp"
 #include "Graph.hpp"
 using namespace std;
@@ -215,8 +216,15 @@ int main() {
         }
         cout << "-----------------------------------------\n\n";
 
+        auto start_time = std::chrono::high_resolution_clock::now();
+        
         vector<RouteOption> direct = graph.findDirectRoutes(originCode, destCode, travelDayOfWeek);
         vector<RouteOption> oneHop = graph.findOneHopRoutes(originCode, destCode, prunedSpace, travelDayOfWeek);
+
+        auto end_time = std::chrono::high_resolution_clock::now();
+        auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time);
+        
+        cout << "[Performance] Routing query executed in: " << duration.count() << " ms\n";
 
         vector<RouteOption> allRoutes;
         for (auto& r : direct) allRoutes.push_back(move(r));
